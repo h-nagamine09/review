@@ -134,3 +134,165 @@ puts sum
 # 157
 #
 #------------------------------------------------------------------------------------------
+# 配列の整列
+items = ["イージスシールド","ウィンドスピア","アースヴレイカー","イナズマハンマー"]
+
+p items
+# ["イージスシールド", "ウィンドスピア", "アースヴレイカー", "イナズマハンマー"]
+#sort,reversメソッドで昇順、降順にソートする
+p items.sort
+p items.sort.reverse
+# ["アースヴレイカー", "イナズマハンマー", "イージスシールド", "ウィンドスピア"]
+# ["ウィンドスピア", "イージスシールド", "イナズマハンマー", "アースヴレイカー"]
+items2 = ["4.イージスシールド","1.ウィンドスピア","3.アースヴレイカー","2.イナズマハンマー"]
+p items2.sort
+# ["1.ウィンドスピア", "2.イナズマハンマー", "3.アースヴレイカー", "4.イージスシールド"]
+
+items3 = ["鉄壁シールド","風神スピア","大地ヴレイカー","稲妻ハンマー"] #漢字の場合は文字コード順となる
+p items3.sort
+# 出力
+# ["大地ヴレイカー", "稲妻ハンマー", "鉄壁シールド", "風神スピア"]
+#------------------------------------------------------------------------------------------
+#配列を昇順にソートする
+
+apples = [310, 322, 292, 288, 300, 346]
+# ここに、要素をソートして表示するコードを記述する
+p apples.sort
+# 期待する出力値
+# [288, 292, 300, 310, 322, 346]
+
+#配列を逆順にソートする
+
+apples = [310, 322, 292, 288, 300, 346]
+# ここに、要素をソートして、逆順に整列し、表示するコードを記述する
+p apples.sort.reverse
+# 期待する出力値
+# [346, 322, 310, 300, 292, 288]
+
+# 英単語リストをアルファベット順に並べる
+
+words = ["pumpkin", "orange", "apple", "carrot", "onion"]
+# ここに、要素をソートして表示するコードを記述する
+p words.sort
+# 期待する出力値
+# ["apple", "carrot", "onion", "orange", "pumpkin"]
+#------------------------------------------------------------------------------------------
+# ハッシュをキーで昇順にソートする
+
+math = {"いいだ" => 12, "えんどう" => 99, "あだち" => 40}
+# この下で、ハッシュをキーでソートして出力しよう
+p math.sort
+# 期待する出力値
+# [["あだち", 40], ["いいだ", 12], ["えんどう", 99]]
+
+# ハッシュをソートしてハッシュで出力する
+
+math = {"えんどう" => 99, "あだち" => 40, "いいだ" => 12}
+# この下で、ハッシュをキーでソートして、ハッシュとして出力しよう
+
+p math.sort.to_h
+# 期待する出力値
+# {"あだち" => 40, "いいだ" => 12, "えんどう" => 99}
+
+# ハッシュを値で昇順にソートする
+
+math = {"あだち" => 40, "いいだ" => 12, "えんどう" => 99}
+# この下で、ハッシュを値でソートして出力しよう
+p math.sort_by{|m,v| v}
+
+# 期待する出力値
+# [["いいだ", 12], ["あだち", 40], ["えんどう", 99]]
+#------------------------------------------------------------------------------------------
+# RPGのアイテム一覧を再現２
+
+# 画像用ハッシュ
+items_img = {
+    "剣" => "http://paiza.jp/learning/images/sword.png",
+    "盾" => "http://paiza.jp/learning/images/shield.png",
+    "回復薬" => "http://paiza.jp/learning/images/potion.png",
+    "クリスタル" => "http://paiza.jp/learning/images/crystal.png"
+}
+
+# アイテムの並び順配列
+items_order = ["クリスタル", "盾", "回復薬", "剣", "回復薬", "回復薬"]
+# p items_img
+# p items_order
+
+# アイテムを取り出す
+items_order.each do |item_name|
+    puts "<img src = '#{items_img[item_name]}'>"
+    puts "#{item_name}<br>"
+end
+# 画像ファイルを取り出す
+
+# 演習課題「画像を順番に出力する」
+# 画像用ハッシュ
+items_img = {
+    "剣" => "http://paiza.jp/learning/images/sword.png",
+    "盾" => "http://paiza.jp/learning/images/shield.png",
+    "回復薬" => "http://paiza.jp/learning/images/potion.png",
+    "クリスタル" => "http://paiza.jp/learning/images/crystal.png"
+}
+
+# アイテムの並び順配列
+items_order = ["剣", "盾", "回復薬", "クリスタル"]
+
+# ここから下を記述しよう
+items_order.each do |item_name|
+    puts "<img src = '#{items_img[item_name]}'><br>"
+end
+
+# 演習課題「アイテムリストを作ってみよう」
+# 画像用ハッシュ
+items_img = {
+    "剣" => "http://paiza.jp/learning/images/sword.png",
+    "盾" => "http://paiza.jp/learning/images/shield.png",
+    "回復薬" => "http://paiza.jp/learning/images/potion.png",
+    "クリスタル" => "http://paiza.jp/learning/images/crystal.png"
+}
+
+# ここから下を記述しよう
+
+# 入力される値を変数へ保存
+line = gets.to_i
+# p line
+#入力された数字分ハッシュを出力
+(1..line).each do |item_name|
+    img = gets.chomp
+    # puts img
+    puts "<img src = '#{items_img[img]}'>"
+end
+#------------------------------------------------------------------------------------------
+# Here your code !
+#ハッシュはシンボル(:)により記述を省略できる
+enemies1 = {"ザコ" => "スライム","中ボス" => "ドラゴン", "ラスボス" => "魔王"}
+p enemies1
+p enemies1["ザコ"]
+
+enemies2 = {:zako => "スライム",:boss => "ドラゴン",:king => "魔王"}
+p enemies2
+p enemies2[:boss]
+
+enemies3 ={zako: "スライム",boss: "ドラゴン",king: "魔王"}
+p enemies3
+p enemies3[:king]
+
+enemies3.each do |level,enemy|
+    puts "#{level}の#{enemy}が現れた"
+end
+
+# ループでハッシュの値を出力しよう
+# 右のコードには、skillsというハッシュが定義されており、各値をループで出力します。
+# このハッシュに、次の要素を追加してください。
+#
+# gold = 380
+# luck = 1000
+
+skills = {job: "戦士", power: 100, magic: 200, gold: 380, luck: 1000}
+
+skills.each do |skill,s|
+    puts "#{skill} = #{s}"
+end
+
+
+#------------------------------------------------------------------------------------------
